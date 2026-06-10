@@ -1,33 +1,23 @@
 # Graph Hierarchy Analyzer
 
-A web application and REST API for analyzing directed graph relationships, detecting cycles, constructing hierarchies, identifying invalid and duplicate edges, and generating graph summaries.
+A web application and REST API for processing directed graph relationships, building hierarchies, detecting cycles, validating inputs, and generating graph summaries.
 
 ## Features
 
-* Directed graph processing
-* Hierarchy and tree generation
+* Hierarchy generation
 * Cycle detection
 * Duplicate edge detection
-* Invalid input validation
+* Input validation
 * Depth calculation
-* Multiple independent graph support
-* REST API endpoint
+* Graph summary generation
+* REST API
 * Responsive web interface
-
-## Technology Stack
-
-* Next.js
-* JavaScript
-* Node.js
-* Vercel
 
 ## API
 
-### Endpoint
+### POST /api/graph
 
-POST `/api/graph`
-
-### Request
+Request:
 
 ```json
 {
@@ -35,13 +25,13 @@ POST `/api/graph`
 }
 ```
 
-### Response
+Response:
 
 ```json
 {
-  "user_id": "amansrivastava_21022004",
-  "email_id": "aman.srivastava.btech2023@sitpune.edu.in",
-  "enrollment_number": "23070122024",
+  "user_id": "...",
+  "email_id": "...",
+  "enrollment_number": "...",
   "hierarchies": [],
   "invalid_entries": [],
   "duplicate_edges": [],
@@ -51,42 +41,22 @@ POST `/api/graph`
 
 ## Environment Variables
 
-Create a `.env.local` file in the project root:
-
 ```env
-USER_ID=amansrivastava_21022004
-EMAIL_ID=aman.srivastava.btech2023@sitpune.edu.in
-ENROLLMENT_NUMBER=23070122024
+USER_ID=
+EMAIL_ID=
+ENROLLMENT_NUMBER=
 ```
 
-## Local Development
+## Run Locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Application will be available at:
+## Tech Stack
 
-```text
-http://localhost:3000
-```
-
-## Project Structure
-
-```text
-app/
-├── api/
-│   └── graph/
-│       └── route.js
-
-lib/
-└── graphProcessor.js
-
-scripts/
-└── test-example.mjs
-```
-
-## License
-
-MIT
+* Next.js
+* JavaScript
+* Node.js
+* Vercel
