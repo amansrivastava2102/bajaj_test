@@ -51,6 +51,7 @@ ENROLLMENT_NUMBER=
 
 ```bash
 npm install
+cp .env.example .env.local
 npm run dev
 ```
 

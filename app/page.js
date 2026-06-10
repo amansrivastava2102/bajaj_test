@@ -3,13 +3,11 @@
 import { useState } from "react";
 import styles from "./page.module.css";
 
-const PLACEHOLDER = `A->B
+const INPUT_PLACEHOLDER = `A->B
 A->C
-B->D
+B->D`;
 
-Enter one edge per line`;
-
-const SAMPLE_EDGES = `A->B
+const EXAMPLE_EDGES = `A->B
 A->C
 B->D
 C->E
@@ -138,7 +136,7 @@ export default function Home() {
     }
   };
 
-  const loadSample = () => setInput(SAMPLE_EDGES);
+  const loadExample = () => setInput(EXAMPLE_EDGES);
 
   return (
     <main className={styles.main}>
@@ -154,8 +152,8 @@ export default function Home() {
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.formHeader}>
             <label htmlFor="edges">Node edges</label>
-            <button type="button" className={styles.secondaryBtn} onClick={loadSample}>
-              Load Sample
+            <button type="button" className={styles.secondaryBtn} onClick={loadExample}>
+              Load example
             </button>
           </div>
           <textarea
@@ -163,10 +161,9 @@ export default function Home() {
             className={styles.textarea}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={PLACEHOLDER}
+            placeholder={INPUT_PLACEHOLDER}
             rows={10}
           />
-          <p className={styles.hint}>One edge per line or comma-separated</p>
           <button type="submit" className={styles.submitBtn} disabled={loading}>
             {loading ? "Analyzing…" : "Analyze Graph"}
           </button>
@@ -252,7 +249,7 @@ export default function Home() {
           </div>
 
           <details className={styles.rawJson}>
-            <summary>Raw JSON response</summary>
+            <summary>JSON response</summary>
             <pre>{JSON.stringify(result, null, 2)}</pre>
           </details>
         </section>
