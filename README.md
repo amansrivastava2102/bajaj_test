@@ -1,83 +1,90 @@
-# SIT Graph Hierarchy Analyzer
+# Graph Hierarchy Analyzer
 
-Full-stack solution for the SIT Full Stack Engineering Challenge — a REST API that processes node hierarchies and a web UI to interact with it.
-
-## Live URLs
-
-> Update these after deploying to Vercel (or your host).
-
-| Resource | URL |
-|----------|-----|
-| **API** | `https://YOUR-PROJECT.vercel.app/api/graph` |
-| **Frontend** | `https://YOUR-PROJECT.vercel.app` |
-| **GitHub** | `https://github.com/YOUR-USERNAME/sit-graph-challenge` |
+A web application and REST API for analyzing directed graph relationships, detecting cycles, constructing hierarchies, identifying invalid and duplicate edges, and generating graph summaries.
 
 ## Features
 
-- **POST `/api/graph`** — validates edges, builds trees, detects cycles, computes depth
-- **CORS enabled** — evaluators can call the API from any origin
-- **Single-page frontend** — textarea input, structured results with tree view, summary cards, error handling
+* Directed graph processing
+* Hierarchy and tree generation
+* Cycle detection
+* Duplicate edge detection
+* Invalid input validation
+* Depth calculation
+* Multiple independent graph support
+* REST API endpoint
+* Responsive web interface
 
-## Tech Stack
+## Technology Stack
 
-- [Next.js](https://nextjs.org/) (App Router)
-- Node.js / JavaScript
-- Deployed on Vercel (API + frontend in one project)
+* Next.js
+* JavaScript
+* Node.js
+* Vercel
 
-## Setup
+## API
 
-```bash
-npm install
-cp .env.example .env.local
-# Identity fields are pre-filled in .env.example — copy and adjust if needed
-npm run dev
+### Endpoint
+
+POST `/api/graph`
+
+### Request
+
+```json
+{
+  "edges": ["A->B", "A->C", "B->D"]
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+### Response
+
+```json
+{
+  "user_id": "amansrivastava_21022004",
+  "email_id": "aman.srivastava.btech2023@sitpune.edu.in",
+  "enrollment_number": "23070122024",
+  "hierarchies": [],
+  "invalid_entries": [],
+  "duplicate_edges": [],
+  "summary": {}
+}
+```
 
 ## Environment Variables
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `USER_ID` | Format: `fullname_yyyymmdd` | `amansrivastava_21022004` |
-| `EMAIL_ID` | Your university email | `aman.srivastava.btech2023@sitpune.edu.in` |
-| `ENROLLMENT_NUMBER` | Your enrollment number | `23070122024` |
-| `NEXT_PUBLIC_API_URL` | Optional — defaults to `/api/graph` on same origin | — |
+Create a `.env.local` file in the project root:
 
-## API Usage
-
-```bash
-curl -X POST https://YOUR-PROJECT.vercel.app/api/graph \
-  -H "Content-Type: application/json" \
-  -d '{"edges": ["A->B", "A->C", "B->D"]}'
+```env
+USER_ID=amansrivastava_21022004
+EMAIL_ID=aman.srivastava.btech2023@sitpune.edu.in
+ENROLLMENT_NUMBER=23070122024
 ```
 
-## Test Example Output
+## Local Development
 
 ```bash
-node scripts/test-example.mjs
+npm install
+npm run dev
 ```
 
-## Deploy to Vercel
+Application will be available at:
 
-1. Push this repo to a **public** GitHub repository
-2. Import the repo at [vercel.com/new](https://vercel.com/new)
-3. Add environment variables in Project Settings → Environment Variables:
-   - `USER_ID` = `amansrivastava_21022004`
-   - `EMAIL_ID` = `aman.srivastava.btech2023@sitpune.edu.in`
-   - `ENROLLMENT_NUMBER` = `23070122024`
-4. Deploy — both API and frontend are served from the same URL
+```text
+http://localhost:3000
+```
 
 ## Project Structure
 
-```
+```text
 app/
-  api/graph/route.js   # POST /api/graph endpoint
-  page.js              # Frontend UI
+├── api/
+│   └── graph/
+│       └── route.js
+
 lib/
-  graphProcessor.js    # Core graph logic
+└── graphProcessor.js
+
 scripts/
-  test-example.mjs     # Validates against challenge example
+└── test-example.mjs
 ```
 
 ## License

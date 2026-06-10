@@ -3,6 +3,12 @@
 import { useState } from "react";
 import styles from "./page.module.css";
 
+const PLACEHOLDER = `A->B
+A->C
+B->D
+
+Enter one edge per line`;
+
 const SAMPLE_EDGES = `A->B
 A->C
 B->D
@@ -90,7 +96,7 @@ function HierarchyCard({ hierarchy }) {
 }
 
 export default function Home() {
-  const [input, setInput] = useState(SAMPLE_EDGES);
+  const [input, setInput] = useState("");
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -137,7 +143,6 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <header className={styles.hero}>
-        <p className={styles.eyebrow}>SIT Full Stack Challenge</p>
         <h1>Graph Hierarchy Analyzer</h1>
         <p className={styles.subtitle}>
           Enter node relationships like <code>A-&gt;B</code> to build trees, detect
@@ -149,8 +154,8 @@ export default function Home() {
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.formHeader}>
             <label htmlFor="edges">Node edges</label>
-            <button type="button" className={styles.linkBtn} onClick={loadSample}>
-              Load sample
+            <button type="button" className={styles.secondaryBtn} onClick={loadSample}>
+              Load Sample
             </button>
           </div>
           <textarea
@@ -158,7 +163,7 @@ export default function Home() {
             className={styles.textarea}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="A->B&#10;A->C&#10;B->D"
+            placeholder={PLACEHOLDER}
             rows={10}
           />
           <p className={styles.hint}>One edge per line or comma-separated</p>

@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Graph Hierarchy Analyzer | SIT Challenge",
+  title: "Graph Hierarchy Analyzer",
   description: "Analyze node hierarchies, detect cycles, and visualize tree structures",
 };
 
