@@ -26,9 +26,9 @@ export async function POST(request) {
     const graphResult = processGraph(edges);
 
     const response = {
-      user_id: process.env.USER_ID || "yourname_yyyymmdd",
-      email_id: process.env.EMAIL_ID || "your.email@university.edu",
-      enrollment_number: process.env.ENROLLMENT_NUMBER || "YOUR_ENROLLMENT",
+      user_id: process.env.USER_ID,
+      email_id: process.env.EMAIL_ID,
+      enrollment_number: process.env.ENROLLMENT_NUMBER,
       ...graphResult,
     };
 

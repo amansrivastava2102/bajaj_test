@@ -29,7 +29,7 @@ Full-stack solution for the SIT Full Stack Engineering Challenge — a REST API 
 ```bash
 npm install
 cp .env.example .env.local
-# Edit .env.local with your USER_ID, EMAIL_ID, ENROLLMENT_NUMBER
+# Identity fields are pre-filled in .env.example — copy and adjust if needed
 npm run dev
 ```
 
@@ -37,12 +37,12 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Environment Variables
 
-| Variable | Description |
-|----------|-------------|
-| `USER_ID` | Format: `fullname_yyyymmdd` (e.g. `johndoe_19990917`) |
-| `EMAIL_ID` | Your university email |
-| `ENROLLMENT_NUMBER` | Your enrollment number |
-| `NEXT_PUBLIC_API_URL` | Optional — defaults to `/api/graph` on same origin |
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `USER_ID` | Format: `fullname_yyyymmdd` | `amansrivastava_21022004` |
+| `EMAIL_ID` | Your university email | `aman.srivastava.btech2023@sitpune.edu.in` |
+| `ENROLLMENT_NUMBER` | Your enrollment number | `23070122024` |
+| `NEXT_PUBLIC_API_URL` | Optional — defaults to `/api/graph` on same origin | — |
 
 ## API Usage
 
@@ -62,7 +62,10 @@ node scripts/test-example.mjs
 
 1. Push this repo to a **public** GitHub repository
 2. Import the repo at [vercel.com/new](https://vercel.com/new)
-3. Add environment variables (`USER_ID`, `EMAIL_ID`, `ENROLLMENT_NUMBER`) in Project Settings → Environment Variables
+3. Add environment variables in Project Settings → Environment Variables:
+   - `USER_ID` = `amansrivastava_21022004`
+   - `EMAIL_ID` = `aman.srivastava.btech2023@sitpune.edu.in`
+   - `ENROLLMENT_NUMBER` = `23070122024`
 4. Deploy — both API and frontend are served from the same URL
 
 ## Project Structure
