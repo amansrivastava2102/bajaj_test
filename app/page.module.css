@@ -11,7 +11,7 @@
 }
 
 .hero {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.75rem;
   padding-bottom: 1.75rem;
   border-bottom: 1px solid var(--border);
 }
@@ -32,13 +32,13 @@
 }
 
 .subtitle code {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--interactive-bg);
+  border: 1px solid var(--interactive-border);
   padding: 0.12em 0.4em;
   border-radius: 4px;
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   font-size: 0.875em;
-  color: var(--accent);
+  color: var(--interactive);
 }
 
 .inputSection {
@@ -67,16 +67,16 @@
 .formHeader label {
   font-weight: 500;
   font-size: 0.8125rem;
-  color: var(--text-muted);
-  letter-spacing: 0.01em;
+  color: var(--interactive);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .secondaryBtn {
   flex-shrink: 0;
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-muted);
+  background: var(--interactive-bg);
+  border: 1px solid var(--interactive-border);
+  color: var(--interactive);
   font-size: 0.8125rem;
   font-weight: 500;
   cursor: pointer;
@@ -86,9 +86,9 @@
 }
 
 .secondaryBtn:hover {
-  color: var(--text);
-  border-color: var(--border-focus);
-  background: var(--surface-hover);
+  color: var(--interactive-hover);
+  border-color: #3d4f66;
+  background: #1a2230;
 }
 
 .textarea {
@@ -103,7 +103,7 @@
   padding: 0.875rem 1rem;
   resize: vertical;
   line-height: 1.65;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .textarea::placeholder {
@@ -114,6 +114,7 @@
 .textarea:focus {
   outline: none;
   border-color: var(--border-focus);
+  box-shadow: 0 0 0 1px rgba(124, 141, 168, 0.25);
 }
 
 .hint {
@@ -125,9 +126,9 @@
 .submitBtn {
   width: 100%;
   padding: 0.625rem 1.25rem;
-  background: var(--text);
-  color: var(--bg);
-  border: 1px solid var(--text);
+  background: #1e2a3a;
+  color: var(--text);
+  border: 1px solid var(--interactive-border);
   border-radius: var(--radius);
   font-size: 0.8125rem;
   font-weight: 500;
@@ -137,8 +138,8 @@
 }
 
 .submitBtn:hover:not(:disabled) {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
+  background: #243044;
+  border-color: #3d4f66;
 }
 
 .submitBtn:disabled {
@@ -149,6 +150,7 @@
 .errorBox {
   background: var(--danger-bg);
   border: 1px solid var(--danger-border);
+  border-left: 3px solid var(--danger-muted);
   border-radius: var(--radius-lg);
   padding: 1rem 1.25rem;
   margin-bottom: 1.75rem;
@@ -189,16 +191,17 @@
   gap: 0.875rem;
   background: var(--surface);
   border: 1px solid var(--border);
+  border-left: 3px solid var(--interactive-border);
   border-radius: var(--radius-lg);
   padding: 1.125rem 1.25rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   font-size: 0.8125rem;
 }
 
 .identityBar .label {
   display: block;
   font-size: 0.6875rem;
-  color: var(--text-subtle);
+  color: var(--interactive);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-weight: 500;
@@ -215,7 +218,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.875rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 @media (max-width: 600px) {
@@ -228,20 +231,58 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 1.25rem 1rem;
+  padding: 1.25rem 1.125rem;
   text-align: left;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 .statCard:hover {
-  border-color: #333333;
+  background: var(--surface-hover);
+}
+
+.statCardTrees {
+  border-left: 3px solid var(--success-muted);
+}
+
+.statCardTrees:hover {
+  border-color: var(--border);
+  border-left-color: var(--success-muted);
+}
+
+.statCardTrees .statValue {
+  color: var(--success);
+}
+
+.statCardCycles {
+  border-left: 3px solid var(--warning-muted);
+}
+
+.statCardCycles:hover {
+  border-color: var(--border);
+  border-left-color: var(--warning-muted);
+}
+
+.statCardCycles .statValue {
+  color: var(--warning);
+}
+
+.statCardLargest {
+  border-left: 3px solid var(--interactive);
+}
+
+.statCardLargest:hover {
+  border-color: var(--border);
+  border-left-color: var(--interactive);
+}
+
+.statCardLargest .statValue {
+  color: var(--interactive-hover);
 }
 
 .statValue {
   display: block;
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--text);
   line-height: 1.2;
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
@@ -249,7 +290,7 @@
 
 .statLabel {
   display: block;
-  margin-top: 0.25rem;
+  margin-top: 0.35rem;
   font-size: 0.6875rem;
   color: var(--text-subtle);
   text-transform: uppercase;
@@ -261,7 +302,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 0.875rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .issueBox {
@@ -271,10 +312,37 @@
   padding: 1.125rem;
 }
 
+.issueBoxInvalid {
+  border-left: 3px solid var(--danger-muted);
+  background: var(--danger-bg);
+}
+
+.issueBoxInvalid h4 {
+  color: var(--danger);
+}
+
+.issueBoxInvalid code {
+  border-color: var(--danger-border);
+  color: #d4a0a0;
+}
+
+.issueBoxDuplicate {
+  border-left: 3px solid var(--warning-muted);
+  background: var(--warning-bg);
+}
+
+.issueBoxDuplicate h4 {
+  color: var(--warning);
+}
+
+.issueBoxDuplicate code {
+  border-color: var(--warning-border);
+  color: #c9b070;
+}
+
 .issueBox h4 {
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--text-subtle);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.625rem;
@@ -295,16 +363,17 @@
   border: 1px solid var(--border-subtle);
   padding: 0.15em 0.4em;
   border-radius: 4px;
-  color: var(--text-muted);
 }
 
 .sectionTitle {
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--text-subtle);
+  color: var(--interactive);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 0.875rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
 }
 
 .cardGrid {
@@ -319,15 +388,21 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .card:hover {
   border-color: #333333;
+  box-shadow: var(--shadow-sm);
 }
 
 .cardCycle {
-  border-color: #353535;
+  border-color: var(--warning-border);
+  border-left: 3px solid var(--warning-muted);
+}
+
+.cardCycle .cardHeader {
+  background: var(--warning-bg);
 }
 
 .cardHeader {
@@ -340,6 +415,11 @@
   border-bottom: 1px solid var(--border);
 }
 
+.card:not(.cardCycle) .cardHeader {
+  border-left: 3px solid var(--success-muted);
+  padding-left: calc(1rem - 2px);
+}
+
 .cardHeader h3 {
   font-size: 0.8125rem;
   font-weight: 500;
@@ -349,9 +429,9 @@
 
 .badgeDepth {
   font-size: 0.625rem;
-  background: var(--badge-bg);
-  color: var(--text-subtle);
-  border: 1px solid var(--border);
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid var(--success-border);
   padding: 0.2em 0.5em;
   border-radius: 4px;
   font-weight: 500;
@@ -362,9 +442,9 @@
 
 .badgeCycle {
   font-size: 0.625rem;
-  background: var(--badge-cycle-bg);
-  color: var(--text-subtle);
-  border: 1px solid #353535;
+  background: var(--warning-bg);
+  color: var(--warning);
+  border: 1px solid var(--warning-border);
   padding: 0.2em 0.5em;
   border-radius: 4px;
   font-weight: 500;
@@ -378,22 +458,22 @@
 }
 
 .cycleMessage {
-  color: var(--text-subtle);
+  color: var(--text-muted);
   font-size: 0.8125rem;
   line-height: 1.6;
 }
 
 .treeContainer {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 0.75rem;
-  line-height: 1.65;
+  font-size: 0.8125rem;
+  line-height: 1.7;
 }
 
 .treeList {
   list-style: none;
   padding-left: 1.125rem;
-  border-left: 1px solid var(--border);
-  margin: 0.25rem 0;
+  border-left: 1px solid var(--success-border);
+  margin: 0.3rem 0;
 }
 
 .treeList:first-child {
@@ -402,7 +482,7 @@
 }
 
 .treeNode {
-  color: var(--text);
+  color: var(--success);
   font-weight: 500;
 }
 
@@ -420,28 +500,28 @@
 .rawJson summary {
   cursor: pointer;
   font-weight: 500;
-  color: var(--text-subtle);
+  color: var(--interactive);
   font-size: 0.75rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   transition: color 0.15s ease;
   user-select: none;
 }
 
 .rawJson summary:hover {
-  color: var(--text-muted);
+  color: var(--interactive-hover);
 }
 
 .rawJson pre {
   margin-top: 0.875rem;
-  padding: 1rem;
+  padding: 1rem 1.125rem;
   overflow-x: auto;
   background: var(--bg);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--interactive-border);
   border-radius: var(--radius);
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   font-size: 0.75rem;
-  line-height: 1.7;
-  color: var(--text-muted);
+  line-height: 1.75;
+  color: #8b9cb3;
   tab-size: 2;
 }

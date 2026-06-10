@@ -198,15 +198,15 @@ export default function Home() {
           </div>
 
           <div className={styles.summaryGrid}>
-            <div className={styles.statCard}>
+            <div className={`${styles.statCard} ${styles.statCardTrees}`}>
               <span className={styles.statValue}>{result.summary.total_trees}</span>
               <span className={styles.statLabel}>Trees</span>
             </div>
-            <div className={styles.statCard}>
+            <div className={`${styles.statCard} ${styles.statCardCycles}`}>
               <span className={styles.statValue}>{result.summary.total_cycles}</span>
               <span className={styles.statLabel}>Cycles</span>
             </div>
-            <div className={styles.statCard}>
+            <div className={`${styles.statCard} ${styles.statCardLargest}`}>
               <span className={styles.statValue}>
                 {result.summary.largest_tree_root || "—"}
               </span>
@@ -218,7 +218,7 @@ export default function Home() {
             result.duplicate_edges?.length > 0) && (
             <div className={styles.issuesRow}>
               {result.invalid_entries?.length > 0 && (
-                <div className={styles.issueBox}>
+                <div className={`${styles.issueBox} ${styles.issueBoxInvalid}`}>
                   <h4>Invalid entries</h4>
                   <ul>
                     {result.invalid_entries.map((entry) => (
@@ -230,7 +230,7 @@ export default function Home() {
                 </div>
               )}
               {result.duplicate_edges?.length > 0 && (
-                <div className={styles.issueBox}>
+                <div className={`${styles.issueBox} ${styles.issueBoxDuplicate}`}>
                   <h4>Duplicate edges</h4>
                   <ul>
                     {result.duplicate_edges.map((entry) => (
