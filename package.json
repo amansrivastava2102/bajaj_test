@@ -1,12 +1,13 @@
 {
   "name": "sit-graph-challenge",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:example": "node scripts/test-example.mjs"
   },
   "dependencies": {
     "next": "16.2.9",

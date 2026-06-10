@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SIT Graph Hierarchy Analyzer
 
-## Getting Started
+Full-stack solution for the SIT Full Stack Engineering Challenge — a REST API that processes node hierarchies and a web UI to interact with it.
 
-First, run the development server:
+## Live URLs
+
+> Update these after deploying to Vercel (or your host).
+
+| Resource | URL |
+|----------|-----|
+| **API** | `https://YOUR-PROJECT.vercel.app/api/graph` |
+| **Frontend** | `https://YOUR-PROJECT.vercel.app` |
+| **GitHub** | `https://github.com/YOUR-USERNAME/sit-graph-challenge` |
+
+## Features
+
+- **POST `/api/graph`** — validates edges, builds trees, detects cycles, computes depth
+- **CORS enabled** — evaluators can call the API from any origin
+- **Single-page frontend** — textarea input, structured results with tree view, summary cards, error handling
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) (App Router)
+- Node.js / JavaScript
+- Deployed on Vercel (API + frontend in one project)
+
+## Setup
 
 ```bash
+npm install
+cp .env.example .env.local
+# Edit .env.local with your USER_ID, EMAIL_ID, ENROLLMENT_NUMBER
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Description |
+|----------|-------------|
+| `USER_ID` | Format: `fullname_yyyymmdd` (e.g. `johndoe_19990917`) |
+| `EMAIL_ID` | Your university email |
+| `ENROLLMENT_NUMBER` | Your enrollment number |
+| `NEXT_PUBLIC_API_URL` | Optional — defaults to `/api/graph` on same origin |
 
-## Learn More
+## API Usage
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+curl -X POST https://YOUR-PROJECT.vercel.app/api/graph \
+  -H "Content-Type: application/json" \
+  -d '{"edges": ["A->B", "A->C", "B->D"]}'
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Test Example Output
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+node scripts/test-example.mjs
+```
 
-## Deploy on Vercel
+## Deploy to Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push this repo to a **public** GitHub repository
+2. Import the repo at [vercel.com/new](https://vercel.com/new)
+3. Add environment variables (`USER_ID`, `EMAIL_ID`, `ENROLLMENT_NUMBER`) in Project Settings → Environment Variables
+4. Deploy — both API and frontend are served from the same URL
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+```
+app/
+  api/graph/route.js   # POST /api/graph endpoint
+  page.js              # Frontend UI
+lib/
+  graphProcessor.js    # Core graph logic
+scripts/
+  test-example.mjs     # Validates against challenge example
+```
+
+## License
+
+MIT
